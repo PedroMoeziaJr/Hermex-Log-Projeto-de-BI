@@ -12,7 +12,7 @@ Projeto parte do Alura Challenge BI 2ª Semana
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
 ![image](https://github.com/PedroMoeziaJr/Hermex-Log-Projeto-de-BI/assets/112977342/cbf4dadd-8ef8-4761-b838-a4efc8545ec2)#vitrinedev
 
-![image](https://github.com/PedroMoeziaJr/Hermex-Log-Projeto-de-BI/assets/112977342/e643d4b4-2e3c-4868-b045-3ecbe8721eff)
+
 
 ## Detalhes do projeto da Semana 2
 
@@ -136,11 +136,7 @@ E ASSIM FICOU O SCRIPT DO QLIK SENSE:
 	FROM [lib://Base de Dados Empresa Hermex Log/base-de-dados-Hermex.xlsx]
 	(ooxml, embedded labels, table is Pedidos);
 
-
-
-
-
-
+![image](https://github.com/PedroMoeziaJr/Hermex-Log-Projeto-de-BI/assets/112977342/e643d4b4-2e3c-4868-b045-3ecbe8721eff)
 
 |DAR| Qlik Sense
 
