@@ -12,24 +12,11 @@ Projeto parte do Alura Challenge BI 2ª Semana
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
 ![image](https://github.com/PedroMoeziaJr/Hermex-Log-Projeto-de-BI/assets/112977342/cbf4dadd-8ef8-4761-b838-a4efc8545ec2)#vitrinedev
 
-
-
-
-## Detalhes do projeto
-
-Textos e imagens que descrevam seu projeto, suas conquistas, seus desafios, próximos passos, etc...
-
-
-
-
-
 ![image](https://github.com/PedroMoeziaJr/Hermex-Log-Projeto-de-BI/assets/112977342/e643d4b4-2e3c-4868-b045-3ecbe8721eff)
 
 ## Detalhes do projeto da Semana 2
 
 Detalhes dos requisitos do projeto:
-
-link trello
 
 |ETL no Qlik Desktop|
 
@@ -43,11 +30,11 @@ Outro detalhe é que o campo UF tinha os registro dos estados da seguinte forma:
 
 Desta forma utilizei a função replace do Qlik Sense no carregamento de dados para o registro apresentar somente o as siglas da UF.
 
-    >Replace(UF, 'BR-', '') as UF
+    Replace(UF, 'BR-', '') as UF
 
 O campo ESTADO estava sem registro, diante disso criei uma condicional no Qlik Sense na parte de carregamento de dados para poder poder preencher os registros dos ESTADOS.
 
-    >IF(UF = 'BR-PA' or UF = 'Pará','') 
+    IF(UF = 'BR-PA' or UF = 'Pará','') 
 
 E assim por diante em todos os UF registrados 
 
@@ -55,11 +42,11 @@ No campo UF com o registro DF relacionado com Distrito Federal, coloquei a palav
 
 O campo da "Data da compra" tem também com registro a hora da compra. Por isso usei a função DATE para extrair somente a data do campo.
 
-    >Time("Data da compra") as [Hora da Compra]
+    Time("Data da compra") as [Hora da Compra]
 
 e a criei outro campo para extrair apenas a hora da compra.
 
-    >Time("Data da compra") as [Hora da Compra]
+    Time("Data da compra") as [Hora da Compra]
 
 -As mesmas correções fazer no campo Data Previsão e data de entrega.
 
@@ -129,8 +116,7 @@ LOAD
                             	IF(UF = 'BR-DF', 'Brasília',
                                 	IF(UF = 'BR-AP', 'Amapá',
                                     	IF(UF = 'BR-CE', 'Ceará',
-                                            IF(UF = 'BR-PR', 'Paraná',
-												                      IF(UF = 'BR-RR', 'Roraima',
+                                            IF(UF = 'BR-PR', 'Paraná',IF(UF = 'BR-RR', 'Roraima',
 													                      IF(UF = 'BR-TO', 'Tocantins',
 														                      IF(UF = 'BR-SC', 'Santa Catarina',
 															                      IF(UF = 'BR-AM', 'Amazonas',
@@ -157,17 +143,18 @@ FROM [lib://Base de Dados Empresa Hermex Log/base-de-dados-Hermex.xlsx]
 |DAR| Qlik Sense
 
 
--Mostrar as entregas feitas dentro do prazo.
+##Mostrar as entregas feitas dentro do prazo.
 
 Criar medida
-Count(IF(Date([Data de Entrega]) <= Date([Data Prevista]), 1, 0))
-Date([Data de Entrega]): Essa parte da função converte o valor da coluna "Data de Entrega" em um objeto de data no formato correto. Isso permite que você compare e faça cálculos com datas.
+	Count(IF(Date([Data de Entrega]) <= Date([Data Prevista]), 1, 0))
 
-Date([Data Prevista]): Da mesma forma, essa parte converte o valor da coluna "Data Prevista" em um objeto de data.
+>Date([Data de Entrega]): Essa parte da função converte o valor da coluna "Data de Entrega" em um objeto de data no formato correto. Isso permite que você compare e faça cálculos com datas.
+
+>Date([Data Prevista]): Da mesma forma, essa parte converte o valor da coluna "Data Prevista" em um objeto de data.
 
 <=: O operador <= verifica se a data de entrega é menor ou igual à data prevista. Ele retorna verdadeiro se a data de entrega estiver no prazo ou antecipada.
 
-IF(..., 1, 0): Essa parte do código usa a função condicional IF para atribuir o valor 1 se a condição anterior for verdadeira (ou seja, se a entrega estiver no prazo ou antecipada) e o valor 0 se for falsa (ou seja, se a entrega estiver atrasada).
+>IF(..., 1, 0): Essa parte do código usa a função condicional IF para atribuir o valor 1 se a condição anterior for verdadeira (ou seja, se a entrega estiver no prazo ou antecipada) e o valor 0 se for falsa (ou seja, se a entrega estiver atrasada).
 
 Count(...): A função Count é usada para contar o número de ocorrências do valor 1 resultante da função condicional acima. Isso contará o número de entregas que foram feitas dentro do prazo ou antecipadas.
 Portanto, a função Count(IF(Date([Data de Entrega]) <= Date([Data Prevista]), 1, 0)) conta o número de entregas que foram feitas dentro do prazo ou antecipadas com base nas colunas "Data de Entrega" e "Data Prevista".
