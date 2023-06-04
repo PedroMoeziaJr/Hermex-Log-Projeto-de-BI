@@ -4,16 +4,16 @@ Projeto parte do Alura Challenge BI 2ª Semana
 
 | :placard: Vitrine.Dev |     |
 | -------------  | --- |
-| :sparkles: Nome        | **Titulo do meu projeto**
-| :label: Tecnologias | java, html, ruby, c# (tecnologias utilizadas)
-| :rocket: URL         | https://url-deploy.com.br
+| :sparkles: Nome        | **Hermex Log Qlik Sense**
+| :label: Tecnologias | Qlik Sense Desktop
+| :rocket: URL         | https://trello.com/b/570mANgV/challenge-bi-semana-2
 | :fire: Desafio     | https://url-do-desafio.com.br
 
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
 ![image](https://github.com/PedroMoeziaJr/Hermex-Log-Projeto-de-BI/assets/112977342/cbf4dadd-8ef8-4761-b838-a4efc8545ec2)#vitrinedev
 
 
-![](https://via.placeholder.com/1200x500.png?text=imagem+lindona+do+meu+projeto#vitrinedev)
+
 
 ## Detalhes do projeto
 
