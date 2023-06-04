@@ -15,3 +15,10 @@ Rápida descrição do objetivo de fazer esse projeto
 ## Detalhes do projeto
 
 Textos e imagens que descrevam seu projeto, suas conquistas, seus desafios, próximos passos, etc...
+
+
+
+![image](https://github.com/PedroMoeziaJr/Hermex-Log-Projeto-de-BI/assets/112977342/cbf4dadd-8ef8-4761-b838-a4efc8545ec2)
+
+![image](https://github.com/PedroMoeziaJr/Hermex-Log-Projeto-de-BI/assets/112977342/e643d4b4-2e3c-4868-b045-3ecbe8721eff)
+
