@@ -55,89 +55,96 @@ e a criei outro campo para extrair apenas a hora da compra.
 
 E ASSIM FICOU O SCRIPT DO QLIK SENSE:
 
-Produtos:
-LOAD
-    id_produto,
-    categoria_produto,
-    preço
-FROM [lib://Base de Dados Empresa Hermex Log/base-de-dados-Hermex.xlsx]
-(ooxml, embedded labels, table is Produtos);
+	Produtos:
+	LOAD
+	    id_produto,
+	    categoria_produto,
+	    preço
+	FROM [lib://Base de Dados Empresa Hermex Log/base-de-dados-Hermex.xlsx]
+	(ooxml, embedded labels, table is Produtos);
 
-Estoque:
-LOAD
-    "ID Produto" as id_produto,
-    "Data atualização",
-    Quantidade as [Quantidade Estoque]
-FROM [lib://Base de Dados Empresa Hermex Log/base-de-dados-Hermex.xlsx]
-(ooxml, embedded labels, table is Estoque);
+	Estoque:
+	LOAD
+	    "ID Produto" as id_produto,
+	    "Data atualização",
+	    Quantidade as [Quantidade Estoque]
+	FROM [lib://Base de Dados Empresa Hermex Log/base-de-dados-Hermex.xlsx]
+	(ooxml, embedded labels, table is Estoque);
 
-Veículos:
-LOAD
-    "ID veículos" as [ID Veículo],
-    Tipo,
-    Status
-FROM [lib://Base de Dados Empresa Hermex Log/base-de-dados-Hermex.xlsx]
-(ooxml, embedded labels, table is Veículos);
+	Veículos:
+	LOAD
+	    "ID veículos" as [ID Veículo],
+	    Tipo,
+	    Status
+	FROM [lib://Base de Dados Empresa Hermex Log/base-de-dados-Hermex.xlsx]
+	(ooxml, embedded labels, table is Veículos);
 
-Pedidos:
-LOAD
-    "ID Pedido",
-    "ID Produto" as id_produto,
-    Quantidade,
-    "ID Veículo",
-    "Status do pedido",
-    
-    /*"Data da compra",*/
-    
-    Date("Data da compra") as [Data da Compra],
-    Time("Data da compra") as [Hora da Compra],
-    
-    /*"Data de entrega"*/
-    
-    Date("Data de entrega") as [Data de Entrega],
-    Time("Data de entrega") as [Hora de Entrega],
-    
-    
-    /*"Data previsão",*/
-    
-    Date("Data previsão") as [Data Prevista],
-    Time("Data previsão") as [Hora Prevista],
-    
-    
-    Replace(UF, 'BR-', '') as UF,
-	IF(UF = 'BR-SP' or UF = 'São Paulo', 'São Paulo',
-       IF(UF = 'BR-PA' or UF = 'Pará', 'Pará',
-          IF(UF = 'BR-PI' or UF = 'Piauí', 'Piauí',
-             IF(UF = 'BR-MG' or UF = 'Minas Gerais', 'Minas Gerais', 
-             	IF(UF = 'BR-ES', 'Espírito Santo',
-                	IF(UF = 'BR-RJ', 'Rio de Janeiro',
-                    	IF(UF = 'BR-RN', 'Rio Grande do Norte',
-                        	IF(UF = 'BR-MS', 'Mato Grosso do Sul',
-                            	IF(UF = 'BR-DF', 'Brasília',
-                                	IF(UF = 'BR-AP', 'Amapá',
-                                    	IF(UF = 'BR-CE', 'Ceará',
-                                            IF(UF = 'BR-PR', 'Paraná',IF(UF = 'BR-RR', 'Roraima',
-													                      IF(UF = 'BR-TO', 'Tocantins',
-														                      IF(UF = 'BR-SC', 'Santa Catarina',
-															                      IF(UF = 'BR-AM', 'Amazonas',
-																                          IF(UF = 'BR-PE', 'Pernambuco',
-                                                                	IF(UF = 'BR-RS','Rio Grande do Sul',
-                                                                    	IF(UF = 'BR-RO', 'Rondônia',
-                                                                        	IF(UF= 'BR-MT', 'Mato Grosso',
-                                                                            	IF(UF='BR-MA', 'Maranhão',
-                                                                                	IF(UF='BR-AC', 'Acre',
-                                                                                    	IF(UF='BR-AL', 'Alagoas', 
-                                                                                        	IF(UF='BR-BA', 'Bahia', 
-                                                                                            	IF(UF='BR-GO', 'Goiás', 
-                                                                                                	IF(UF='BR-PB', 'Paraíba',
-                                                                                                    	IF(UF='BR-SE', 'Sergipe',''))))))))))))))))))))))))))) as ESTADO
-       
-                                											
-                        
+	Pedidos:
+	LOAD
+	    "ID Pedido",
+	    "ID Produto" as id_produto,
+	    Quantidade,
+	    "ID Veículo",
+	    "Status do pedido",
+
+	    /*"Data da compra",*/
+
+	    Date("Data da compra") as [Data da Compra],
+	    Time("Data da compra") as [Hora da Compra],
+
+	    /*"Data de entrega"*/
+
+	    Date("Data de entrega") as [Data de Entrega],
+	    Time("Data de entrega") as [Hora de Entrega],
 
 
-FROM [lib://Base de Dados Empresa Hermex Log/base-de-dados-Hermex.xlsx]
-(ooxml, embedded labels, table is Pedidos);
+	    /*"Data previsão",*/
+
+	    Date("Data previsão") as [Data Prevista],
+	    Time("Data previsão") as [Hora Prevista],
+
+
+	    Replace(UF, 'BR-', '') as UF,
+		IF(UF = 'BR-SP' or UF = 'São Paulo', 'São Paulo',
+	       IF(UF = 'BR-PA' or UF = 'Pará', 'Pará',
+		  IF(UF = 'BR-PI' or UF = 'Piauí', 'Piauí',
+		     IF(UF = 'BR-MG' or UF = 'Minas Gerais', 'Minas Gerais', 
+			IF(UF = 'BR-ES', 'Espírito Santo',
+				IF(UF = 'BR-RJ', 'Rio de Janeiro',
+				IF(UF = 'BR-RN', 'Rio Grande do Norte',
+					IF(UF = 'BR-MS', 'Mato Grosso do Sul',
+					IF(UF = 'BR-DF', 'Brasília',
+						IF(UF = 'BR-AP', 'Amapá',
+						IF(UF = 'BR-CE', 'Ceará',
+
+						    IF(UF = 'BR-PR', 'Paraná',
+													IF(UF = 'BR-RR', 'Roraima',
+														IF(UF = 'BR-TO', 'Tocantins',
+															IF(UF = 'BR-SC', 'Santa Catarina',
+																IF(UF = 'BR-AM', 'Amazonas',
+																	IF(UF = 'BR-PE', 'Pernambuco',
+										IF(UF = 'BR-RS','Rio Grande do Sul',
+										IF(UF = 'BR-RO', 'Rondônia',
+											IF(UF= 'BR-MT', 'Mato Grosso',
+											IF(UF='BR-MA', 'Maranhão',
+												IF(UF='BR-AC', 'Acre',
+												IF(UF='BR-AL', 'Alagoas', 
+													IF(UF='BR-BA', 'Bahia', 
+													IF(UF='BR-GO', 'Goiás', 
+														IF(UF='BR-PB', 'Paraíba',
+														IF(UF='BR-SE', 'Sergipe',''))))))))))))))))))))))))))) as ESTADO
+
+
+
+
+
+	FROM [lib://Base de Dados Empresa Hermex Log/base-de-dados-Hermex.xlsx]
+	(ooxml, embedded labels, table is Pedidos);
+
+
+
+
+
 
 
 |DAR| Qlik Sense
