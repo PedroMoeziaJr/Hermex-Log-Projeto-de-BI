@@ -1,6 +1,6 @@
-# Nome do meu projeto
+# Projeto de BI para empresa Hermex Log no Qlik Sense Desktop
 
-Rápida descrição do objetivo de fazer esse projeto
+Projeto parte do Alura Challenge BI 2ª Semana
 
 | :placard: Vitrine.Dev |     |
 | -------------  | --- |
