@@ -7,7 +7,7 @@ Projeto parte do Alura Challenge BI 2ª Semana
 | :sparkles: Nome        | **Hermex Log Qlik Sense**
 | :label: Tecnologias | Qlik Sense Desktop
 | :rocket: URL         | https://trello.com/b/570mANgV/challenge-bi-semana-2
-| :fire: Desafio     | https://url-do-desafio.com.br
+| :fire: Desafio     | [https://url-do-desafio.com.br](https://www.alura.com.br/challenges/bi-3/semana-02-logistica-dados?utm_source=ActiveCampaign&utm_medium=email&utm_content=%5BChallenge+BI%5D+Segunda+semana+liberada+%F0%9F%94%93&utm_campaign=%5BCHALLANGE%5D+%28BI+-+3%C2%AA+ed+%29+E-mail+avisando+libera%C3%A7%C3%A3o+da+aula+02++%2B+convite+live+github+e+vitrine+dev&vgo_ee=7CTKyjQnWA4jiE3yBlF7q9A6ssAik5JEHf9FGO%2FXPuIpjBI%3D%3AEaQRLfaQ9mjGI1iP%2FQbfzdyEh0tDyPop)
 
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
 ![image](https://github.com/PedroMoeziaJr/Hermex-Log-Projeto-de-BI/assets/112977342/cbf4dadd-8ef8-4761-b838-a4efc8545ec2)#vitrinedev
