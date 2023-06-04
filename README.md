@@ -147,18 +147,18 @@ E ASSIM FICOU O SCRIPT DO QLIK SENSE:
 
 ##Mostrar as entregas feitas dentro do prazo.
 
-Criar medida
+-Criar medida
 	Count(IF(Date([Data de Entrega]) <= Date([Data Prevista]), 1, 0))
 
->Date([Data de Entrega]): Essa parte da função converte o valor da coluna "Data de Entrega" em um objeto de data no formato correto. Isso permite que você compare e faça cálculos com datas.
+|Date([Data de Entrega]): Essa parte da função converte o valor da coluna "Data de Entrega" em um objeto de data no formato correto. Isso permite que você compare e faça cálculos com datas.
 
->Date([Data Prevista]): Da mesma forma, essa parte converte o valor da coluna "Data Prevista" em um objeto de data.
+|Date([Data Prevista]): Da mesma forma, essa parte converte o valor da coluna "Data Prevista" em um objeto de data.
 
-<=: O operador <= verifica se a data de entrega é menor ou igual à data prevista. Ele retorna verdadeiro se a data de entrega estiver no prazo ou antecipada.
+|<=: O operador <= verifica se a data de entrega é menor ou igual à data prevista. Ele retorna verdadeiro se a data de entrega estiver no prazo ou antecipada.
 
->IF(..., 1, 0): Essa parte do código usa a função condicional IF para atribuir o valor 1 se a condição anterior for verdadeira (ou seja, se a entrega estiver no prazo ou antecipada) e o valor 0 se for falsa (ou seja, se a entrega estiver atrasada).
+|IF(..., 1, 0): Essa parte do código usa a função condicional IF para atribuir o valor 1 se a condição anterior for verdadeira (ou seja, se a entrega estiver no prazo ou antecipada) e o valor 0 se for falsa (ou seja, se a entrega estiver atrasada).
 
-Count(...): A função Count é usada para contar o número de ocorrências do valor 1 resultante da função condicional acima. Isso contará o número de entregas que foram feitas dentro do prazo ou antecipadas.
+|Count(...): A função Count é usada para contar o número de ocorrências do valor 1 resultante da função condicional acima. Isso contará o número de entregas que foram feitas dentro do prazo ou antecipadas.
 Portanto, a função Count(IF(Date([Data de Entrega]) <= Date([Data Prevista]), 1, 0)) conta o número de entregas que foram feitas dentro do prazo ou antecipadas com base nas colunas "Data de Entrega" e "Data Prevista".
 
 
