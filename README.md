@@ -145,9 +145,10 @@ E ASSIM FICOU O SCRIPT DO QLIK SENSE:
 |DAR| Qlik Sense
 
 
-##Mostrar as entregas feitas dentro do prazo.
+1-Mostrar as entregas feitas dentro do prazo.
 
--Criar medida
+-Criei a medida com a seguinte fórmula:
+	
 	Count(IF(Date([Data de Entrega]) <= Date([Data Prevista]), 1, 0))
 
 >Date([Data de Entrega]): Essa parte da função converte o valor da coluna "Data de Entrega" em um objeto de data no formato correto. Isso permite que você compare e faça cálculos com datas.
@@ -162,45 +163,56 @@ E ASSIM FICOU O SCRIPT DO QLIK SENSE:
 Portanto, a função Count(IF(Date([Data de Entrega]) <= Date([Data Prevista]), 1, 0)) conta o número de entregas que foram feitas dentro do prazo ou antecipadas com base nas colunas "Data de Entrega" e "Data Prevista".
 
 
--Mostrar entregas feitas em atraso.
-Sum(IF(Date([Data de Entrega]) > Date([Data Prevista]), 1, 0))
-Date([Data de Entrega]): Essa parte da expressão converte o valor da coluna "Data de Entrega" em um objeto de data no formato correto. Isso permite que você compare e faça cálculos com datas.
+2-Mostrar entregas feitas em atraso.
+-Criei a seguinte medida:
+	
+	Sum(IF(Date([Data de Entrega]) > Date([Data Prevista]), 1, 0))
 
-Date([Data Prevista]): Da mesma forma, essa parte converte o valor da coluna "Data Prevista" em um objeto de data.
+>Date([Data de Entrega]): Essa parte da expressão converte o valor da coluna "Data de Entrega" em um objeto de data no formato correto. Isso permite que você compare e faça cálculos com datas.
 
->: O operador > verifica se a data de entrega é maior que a data prevista. Ele retorna verdadeiro se a data de entrega estiver atrasada.
+>Date([Data Prevista]): Da mesma forma, essa parte converte o valor da coluna "Data Prevista" em um objeto de data.
 
-IF(..., 1, 0): Essa parte do código usa a função condicional IF para atribuir o valor 1 se a condição anterior for verdadeira (ou seja, se a entrega estiver atrasada) e o valor 0 se for falsa (ou seja, se a entrega estiver dentro do prazo ou antecipada).
+>>: O operador > verifica se a data de entrega é maior que a data prevista. Ele retorna verdadeiro se a data de entrega estiver atrasada.
 
-Sum(...): A função Sum é usada para somar os valores resultantes da função condicional acima. Isso calcula a soma de todas as entregas que estão atrasadas.
+>IF(..., 1, 0): Essa parte do código usa a função condicional IF para atribuir o valor 1 se a condição anterior for verdadeira (ou seja, se a entrega estiver atrasada) e o valor 0 se for falsa (ou seja, se a entrega estiver dentro do prazo ou antecipada).
+
+>Sum(...): A função Sum é usada para somar os valores resultantes da função condicional acima. Isso calcula a soma de todas as entregas que estão atrasadas.
 
 Portanto, a expressão Sum(IF(Date([Data de Entrega]) > Date([Data Prevista]), 1, 0)) soma o número de entregas que estão atrasadas com base nas colunas "Data de Entrega" e "Data Prevista".
 
--Quantidade de veículos disponíveis
-Count(DISTINCT [ID Veículo]) - Count(DISTINCT IF(Status = 'Em Uso', [ID Veículo]))
-Count(DISTINCT [ID Veículo]): Essa parte da expressão conta a quantidade distinta de valores na coluna "ID Veículo". Ela retorna o número total de veículos disponíveis, sem levar em conta o status.
+3-Quantidade de veículos disponíveis
+Criei a seguinte medida:
+	
+	Count(DISTINCT [ID Veículo]) - Count(DISTINCT IF(Status = 'Em Uso', [ID Veículo]))
 
-Count(DISTINCT IF(Status = 'Em Uso', [ID Veículo])): Nessa parte, utilizamos a função condicional IF para verificar se o status do veículo é igual a "Em Uso". Se a condição for verdadeira, ou seja, se o veículo estiver em uso, o valor [ID Veículo] é considerado para o cálculo. Caso contrário, não é considerado.
+>Count(DISTINCT [ID Veículo]): Essa parte da expressão conta a quantidade distinta de valores na coluna "ID Veículo". Ela retorna o número total de veículos disponíveis, sem levar em conta o status.
 
-Count(DISTINCT [ID Veículo]) - Count(DISTINCT IF(Status = 'Em Uso', [ID Veículo])): Subtraímos o número de veículos em uso do número total de veículos disponíveis. Essa subtração nos fornece a quantidade de veículos disponíveis que não estão em uso.
+>Count(DISTINCT IF(Status = 'Em Uso', [ID Veículo])): Nessa parte, utilizamos a função condicional IF para verificar se o status do veículo é igual a "Em Uso". Se a condição for verdadeira, ou seja, se o veículo estiver em uso, o valor [ID Veículo] é considerado para o cálculo. Caso contrário, não é considerado.
+
+>Count(DISTINCT [ID Veículo]) - Count(DISTINCT IF(Status = 'Em Uso', [ID Veículo])): Subtraímos o número de veículos em uso do número total de veículos disponíveis. Essa subtração nos fornece a quantidade de veículos disponíveis que não estão em uso.
 
 Portanto, a expressão Count(DISTINCT [ID Veículo]) - Count(DISTINCT IF(Status = 'Em Uso', [ID Veículo])) calcula a diferença entre o número total de veículos disponíveis e o número de veículos em uso, resultando no número de veículos disponíveis no momento.
 
--Mostrar o tempo médio da compra até a data de expedição em um gráfico de linha, primeiro criar a expressão:
+4-Mostrar o tempo médio da compra até a data de expedição em um gráfico de linha, primeiro criei a medida: 
 
-Avg(Interval([Data de Entrega] - [Data da Compra], 'DD'))[Data de Entrega] - [Data da Compra]: Essa parte da expressão calcula a diferença entre a data de entrega e a data da compra. O resultado dessa subtração será um valor numérico representando a diferença de dias entre as duas datas.
+	Avg(Interval([Data de Entrega] - [Data da Compra], 'DD'))
 
-Interval([Data de Entrega] - [Data da Compra], 'DD'): Utilizamos a função Interval para converter o resultado da subtração em um intervalo de tempo. Nesse caso, estamos especificando que queremos o intervalo em dias, usando a unidade 'DD'.
+>Avg(Interval([Data de Entrega] - [Data da Compra], 'DD'))[Data de Entrega] - [Data da Compra]: Essa parte da expressão calcula a diferença entre a data de entrega e a data da compra. O resultado dessa subtração será um valor numérico representando a diferença de dias entre as duas datas.
 
-Avg(Interval([Data de Entrega] - [Data da Compra], 'DD')): A função Avg é aplicada para calcular a média dos valores do intervalo de tempo em dias. Ela retorna o valor médio, considerando todos os registros.
+>Interval([Data de Entrega] - [Data da Compra], 'DD'): Utilizamos a função Interval para converter o resultado da subtração em um intervalo de tempo. Nesse caso, estamos especificando que queremos o intervalo em dias, usando a unidade 'DD'.
 
-Portanto, a expressão Avg(Interval([Data de Entrega] - [Data da Compra], 'DD')) calcula a média do intervalo de tempo, em dias, entre a data de entrega e a data da compra. Essa média representa o tempo médio de expedição até a chegada do produto para o cliente.
+>Avg(Interval([Data de Entrega] - [Data da Compra], 'DD')): A função Avg é aplicada para calcular a média dos valores do intervalo de tempo em dias. Ela retorna o valor médio, considerando todos os registros.
 
--Média de tempo entre compra e entrega (dias)
-[Data de Entrega] - [Data da Compra]: Essa parte da expressão calcula a diferença entre a data de entrega e a data da compra. O resultado dessa subtração será um valor numérico representando a diferença de dias entre as duas datas.
+>Portanto, a expressão Avg(Interval([Data de Entrega] - [Data da Compra], 'DD')) calcula a média do intervalo de tempo, em dias, entre a data de entrega e a data da compra. Essa média representa o tempo médio de expedição até a chegada do produto para o cliente.
 
-Interval([Data de Entrega] - [Data da Compra], 'DD'): Utilizamos a função Interval para converter o resultado da subtração em um intervalo de tempo. Nesse caso, estamos especificando que queremos o intervalo em dias, usando a unidade 'DD'.
+5-Média de tempo entre compra e entrega (dias)
 
-Avg(Interval([Data de Entrega] - [Data da Compra], 'DD')): A função Avg é aplicada para calcular a média dos valores do intervalo de tempo em dias. Ela retorna o valor médio, considerando todos os registros.
+	Avg(Interval([Data de Entrega] - [Data da Compra], 'DD'))
+
+>[Data de Entrega] - [Data da Compra]: Essa parte da expressão calcula a diferença entre a data de entrega e a data da compra. O resultado dessa subtração será um valor numérico representando a diferença de dias entre as duas datas.
+
+>Interval([Data de Entrega] - [Data da Compra], 'DD'): Utilizamos a função Interval para converter o resultado da subtração em um intervalo de tempo. Nesse caso, estamos especificando que queremos o intervalo em dias, usando a unidade 'DD'.
+
+>Avg(Interval([Data de Entrega] - [Data da Compra], 'DD')): A função Avg é aplicada para calcular a média dos valores do intervalo de tempo em dias. Ela retorna o valor médio, considerando todos os registros.
 
 Portanto, a expressão Avg(Interval([Data de Entrega] - [Data da Compra], 'DD')) calcula a média do intervalo de tempo, em dias, entre a data de entrega e a data da compra. Essa média representa o tempo médio de expedição até a chegada do produto para o cliente.
