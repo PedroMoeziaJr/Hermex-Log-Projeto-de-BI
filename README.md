@@ -11,10 +11,9 @@ Projeto parte do Alura Challenge BI 2ª Semana
 
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
 
-![image](https://github.com/PedroMoeziaJr/Hermex-Log-Projeto-de-BI/assets/112977342/cbf4dadd-8ef8-4761-b838-a4efc8545ec2)
-
 ![Hermex logo azul e laranja](https://github.com/PedroMoeziaJr/Hermex-Log-Projeto-de-BI/assets/112977342/0bcafc30-7b5d-4ce9-aaf8-5adb8f151e21#vitrinedev)
 
+![image](https://github.com/PedroMoeziaJr/Hermex-Log-Projeto-de-BI/assets/112977342/cbf4dadd-8ef8-4761-b838-a4efc8545ec2)
 
 ## Detalhes do projeto da Semana 2
 
